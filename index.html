@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>For Aleena ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* --- GLOBAL STYLES --- */
+        * { box-sizing: border-box; }
+        body {
+            margin: 0; padding: 0;
+            height: 100vh; width: 100vw;
+            display: flex; flex-direction: column;
+            justify-content: center; align-items: center;
+            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+            background-color: #ffdde1;
+            background-image: linear-gradient(to right, #ffdde1 0%, #ee9ca7 100%);
+            font-family: 'Poppins', sans-serif;
+            overflow: hidden; text-align: center;
+            position: relative;
+        }
+
+        /* --- BACKGROUND ANIMATION --- */
+        .bg-element {
+            position: absolute;
+            font-size: 2rem;
+            animation: floatUp 10s linear infinite;
+            z-index: 0; opacity: 0.5; pointer-events: none;
+        }
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            20% { opacity: 0.6; }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* --- MAIN CARD --- */
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            backdrop-filter: blur(5px);
+            z-index: 10;
+            width: 90%; max-width: 400px;
+            border: 2px solid #fff;
+            position: relative;
+            transition: all 0.5s ease;
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem; color: #d63384;
+            margin: 0 0 10px 0; line-height: 1.2;
+        }
+        p { font-size: 1rem; color: #555; margin-bottom: 15px; }
+        
+        /* --- IMAGE STYLES --- */
+        img.main-img {
+            width: 100%;
+            height: 220px; /* Slightly taller for the rose */
+            object-fit: cover; /* Ensures it looks perfect */
+            border-radius: 15px; margin-bottom: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            animation: popIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes popIn {
+            0% { transform: scale(0); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        /* --- BUTTONS --- */
+        .btn {
+            padding: 10px 25px; font-size: 1rem;
+            border: none; border-radius: 50px;
+            cursor: pointer; transition: transform 0.2s;
+            font-family: 'Poppins', sans-serif; font-weight: 600;
+            outline: none; -webkit-tap-highlight-color: transparent;
+        }
+        .btn-primary { background: #ff4d6d; color: white; box-shadow: 0 4px 15px rgba(255, 77, 109, 0.4); }
+        .btn-primary:active { transform: scale(0.95); }
+        
+        .btn-group { display: flex; justify-content: center; gap: 15px; height: 50px; position: relative; }
+        #noBtn { background: #fff; color: #555; border: 2px solid #ddd; z-index: 50; }
+        
+        .hidden { display: none !important; }
+
+        /* --- POPUP MODAL STYLES --- */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5);
+            display: flex; justify-content: center; align-items: center;
+            z-index: 100; opacity: 0; pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        .modal-overlay.active { opacity: 1; pointer-events: all; }
+        
+        .modal-box {
+            background: white; padding: 2rem;
+            border-radius: 15px; text-align: center;
+            width: 85%; max-width: 300px;
+            transform: scale(0.8); transition: transform 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        .modal-overlay.active .modal-box { transform: scale(1); }
+        .modal-box h3 { color: #d63384; font-family: 'Dancing Script', cursive; font-size: 2rem; margin: 0 0 10px 0; }
+        .modal-box p { font-size: 1rem; color: #555; }
+        .close-btn { margin-top: 15px; background: #555; color: white; padding: 8px 20px; border-radius: 20px; border: none; cursor: pointer; }
+
+    </style>
+</head>
+<body>
+
+    <div id="bg-container"></div>
+    
+    <div class="container" id="content-card"></div>
+
+    <div class="modal-overlay" id="custom-modal">
+        <div class="modal-box">
+            <h3>Love You! ❤️</h3>
+            <p>Sending you all my love today, Aleena!</p>
+            <button class="close-btn" onclick="closeModal()">Close</button>
+        </div>
+    </div>
+
+    <script>
+        // ==========================================
+        // SETTINGS (CHANGE TO NULL BEFORE SENDING)
+        // ==========================================
+        const debugDay = 7; 
+        // ==========================================
+        
+        const contentCard = document.getElementById('content-card');
+        const bgContainer = document.getElementById('bg-container');
+        const modal = document.getElementById('custom-modal');
+        
+        const today = new Date();
+        const currentDay = debugDay || today.getDate(); 
+        const currentMonth = today.getMonth() + 1; 
+
+        // Background Generator
+        function createBackground(emoji) {
+            bgContainer.innerHTML = '';
+            for(let i=0; i<20; i++) {
+                let el = document.createElement('div');
+                el.innerText = emoji;
+                el.classList.add('bg-element');
+                el.style.left = Math.random() * 100 + 'vw';
+                el.style.animationDuration = (Math.random() * 5 + 5) + 's';
+                el.style.fontSize = (Math.random() * 1 + 1.5) + 'rem';
+                bgContainer.appendChild(el);
+            }
+        }
+
+        // Popup Functions
+        function showPopup() {
+            modal.classList.add('active');
+            createBackground('💖'); // Add hearts when she clicks accept
+        }
+        function closeModal() {
+            modal.classList.remove('active');
+        }
+
+        // Render Page
+        function renderPage() {
+            if (currentMonth !== 2 && !debugDay) {
+                renderWaiting("It's not Valentine's week yet!");
+                return;
+            }
+
+            switch(currentDay) {
+                case 7: renderRoseDay(); break;
+                case 8: renderProposeDay(); break;
+                case 9: renderChocolateDay(); break;
+                case 10: renderTeddyDay(); break;
+                case 11: renderPromiseDay(); break;
+                case 12: renderHugDay(); break;
+                case 13: renderKissDay(); break;
+                case 14: renderValentineDay(); break;
+                default:
+                    if (currentDay < 7) renderWaiting("Love is loading... Wait for Feb 7!");
+                    else renderWaiting("Valentine's week is over, but I love you forever Aleena! ❤️");
+            }
+        }
+
+        // --- DAY 7: ROSE DAY ---
+        function renderRoseDay() {
+            createBackground('🌹');
+            contentCard.innerHTML = `
+                <h1>Happy Rose Day! 🌹</h1>
+                <p>For my beautiful Aleena.</p>
+                <img class="main-img" src="https://images.unsplash.com/photo-1559563458-527698bf5295?q=80&w=800&auto=format&fit=crop" alt="Red Rose">
+                <button class="btn btn-primary" onclick="showPopup()">Accept Rose</button>
+            `;
+        }
+
+        // --- DAY 8: PROPOSE DAY ---
+        function renderProposeDay() {
+            createBackground('💍');
+            contentCard.innerHTML = `
+                <div id="propose-q">
+                    <h1>Aleena, will you be my Valentine?</h1>
+                    <p>I have a question for you...</p>
+                    <div class="btn-group">
+                        <button class="btn btn-primary" id="yesBtn">YES! 💖</button>
+                        <button class="btn" id="noBtn">No</button>
+                    </div>
+                </div>
+                <div id="propose-s" class="hidden">
+                    <h1>Yay! I knew it! ❤️</h1>
+                    <p>Aleena, you've made me the happiest person!</p>
+                    <img class="main-img" src="https://media.giphy.com/media/26BRv0ThflsHCqDrG/giphy.gif">
+                </div>
+            `;
+            setTimeout(initProposeLogic, 100);
+        }
+
+        function initProposeLogic() {
+            const noBtn = document.getElementById('noBtn');
+            const yesBtn = document.getElementById('yesBtn');
+            const proposeQ = document.getElementById('propose-q');
+            const proposeS = document.getElementById('propose-s');
+
+            function moveButton() {
+                const margin = 20; 
+                const btnRect = noBtn.getBoundingClientRect();
+                const maxWidth = window.innerWidth - btnRect.width - margin;
+                const maxHeight = window.innerHeight - btnRect.height - margin;
+                const newX = Math.max(margin, Math.random() * maxWidth);
+                const newY = Math.max(margin, Math.random() * maxHeight);
+                noBtn.style.position = 'fixed';
+                noBtn.style.left = newX + 'px';
+                noBtn.style.top = newY + 'px';
+            }
+
+            noBtn.addEventListener('mouseover', moveButton);
+            noBtn.addEventListener('touchstart', (e) => { e.preventDefault(); moveButton(); });
+            yesBtn.addEventListener('click', () => {
+                proposeQ.classList.add('hidden');
+                proposeS.classList.remove('hidden');
+                createBackground('💖');
+            });
+        }
+
+        // --- OTHER DAYS ---
+        function renderChocolateDay() {
+            createBackground('🍫');
+            contentCard.innerHTML = `
+                <h1>Happy Chocolate Day, Aleena! 🍫</h1>
+                <p>You are sweeter than any chocolate.</p>
+                <img class="main-img" src="https://media.giphy.com/media/l2JdXD1nIVYUlR3k4/giphy.gif">
+            `;
+        }
+
+        function renderTeddyDay() {
+            createBackground('🧸');
+            contentCard.innerHTML = `
+                <h1>Happy Teddy Day! 🧸</h1>
+                <p>Sending a giant bear hug to you, Aleena.</p>
+                <img class="main-img" src="https://media.giphy.com/media/CT5Ye7uVJLFtu/giphy.gif">
+            `;
+        }
+
+        function renderPromiseDay() {
+            createBackground('🤞');
+            contentCard.innerHTML = `
+                <h1>Happy Promise Day! 🤞</h1>
+                <p>To my dearest Aleena:</p>
+                <ul style="text-align:left; color:#555; margin-bottom:20px;">
+                    <li>✨ I promise to always annoy you (a little).</li>
+                    <li>✨ I promise to support your dreams.</li>
+                    <li>✨ I promise to love you more every day.</li>
+                </ul>
+                <img class="main-img" src="https://media.giphy.com/media/3o7TKoWXm3okO1kgHC/giphy.gif">
+            `;
+        }
+
+        function renderHugDay() {
+            createBackground('🤗');
+            contentCard.innerHTML = `
+                <h1>Happy Hug Day! 🤗</h1>
+                <p>Aleena, I wish I could hold you tight right now.</p>
+                <img class="main-img" src="https://media.giphy.com/media/l8ooOxhcItds6y5yK/giphy.gif">
+            `;
+        }
+
+        function renderKissDay() {
+            createBackground('💋');
+            contentCard.innerHTML = `
+                <h1>Happy Kiss Day! 💋</h1>
+                <p>Sending a million kisses to my favorite person.</p>
+                <img class="main-img" src="https://media.giphy.com/media/QGc8RgGdXqBoc/giphy.gif">
+            `;
+        }
+
+        function renderValentineDay() {
+            createBackground('❤️');
+            contentCard.innerHTML = `
+                <h1>Happy Valentine's Day! ❤️</h1>
+                <p>Aleena, you are my everything.</p>
+                <img class="main-img" src="https://media.giphy.com/media/26FLdmIp6wJr91JAI/giphy.gif">
+                <p>I love you so much!</p>
+            `;
+        }
+
+        function renderWaiting(msg) {
+            createBackground('⏳');
+            contentCard.innerHTML = `<h1>Coming Soon...</h1><p>${msg}</p>`;
+        }
+
+        renderPage();
+    </script>
+</body>
+</html>
