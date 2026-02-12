@@ -1,23 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>For Aleena ❤️</title>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600&display=swap"
+        rel="stylesheet">
     <style>
         /* --- GLOBAL STYLES --- */
-        * { box-sizing: border-box; }
+        * {
+            box-sizing: border-box;
+        }
+
         body {
-            margin: 0; padding: 0;
-            height: 100vh; width: 100vw;
-            display: flex; flex-direction: column;
-            justify-content: center; align-items: center;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
             background-color: #ffdde1;
             background-image: linear-gradient(to right, #ffdde1 0%, #ee9ca7 100%);
             font-family: 'Poppins', sans-serif;
-            overflow: hidden; text-align: center;
+            overflow: hidden;
+            text-align: center;
             position: relative;
         }
 
@@ -26,12 +37,25 @@
             position: absolute;
             font-size: 2rem;
             animation: floatUp 10s linear infinite;
-            z-index: 0; opacity: 0.5; pointer-events: none;
+            z-index: 0;
+            opacity: 0.5;
+            pointer-events: none;
         }
+
         @keyframes floatUp {
-            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-            20% { opacity: 0.6; }
-            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 0.6;
+            }
+
+            100% {
+                transform: translateY(-10vh) rotate(360deg);
+                opacity: 0;
+            }
         }
 
         /* --- MAIN CARD --- */
@@ -39,10 +63,11 @@
             background: rgba(255, 255, 255, 0.95);
             padding: 2rem;
             border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
             backdrop-filter: blur(5px);
             z-index: 10;
-            width: 90%; max-width: 400px;
+            width: 90%;
+            max-width: 400px;
             border: 2px solid #fff;
             position: relative;
             transition: all 0.5s ease;
@@ -50,83 +75,153 @@
 
         h1 {
             font-family: 'Dancing Script', cursive;
-            font-size: 2.5rem; color: #d63384;
-            margin: 0 0 10px 0; line-height: 1.2;
+            font-size: 2.5rem;
+            color: #d63384;
+            margin: 0 0 10px 0;
+            line-height: 1.2;
         }
-        p { font-size: 1rem; color: #555; margin-bottom: 15px; }
-        
+
+        p {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
         /* --- IMAGE STYLES --- */
         img.main-img {
             width: 100%;
-            height: 250px; 
-            object-fit: cover; 
-            border-radius: 15px; margin-bottom: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            height: 250px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             animation: popIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         @keyframes popIn {
-            0% { transform: scale(0); opacity: 0; }
-            100% { transform: scale(1); opacity: 1; }
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
         }
 
         /* --- BUTTONS --- */
-        .btn-group { display: flex; justify-content: center; gap: 10px; margin-top: 10px; }
-        
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
         .btn {
-            padding: 10px 20px; font-size: 1rem;
-            border: none; border-radius: 50px;
-            cursor: pointer; transition: transform 0.2s;
-            font-family: 'Poppins', sans-serif; font-weight: 600;
-            outline: none; -webkit-tap-highlight-color: transparent;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.2s;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            outline: none;
+            -webkit-tap-highlight-color: transparent;
         }
-        
-        .btn-primary { 
-            background: #ff4d6d; color: white; 
-            box-shadow: 0 4px 15px rgba(255, 77, 109, 0.4); 
+
+        .btn-primary {
+            background: #ff4d6d;
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 77, 109, 0.4);
         }
-        
+
         .btn-secondary {
-            background: #fff; color: #555; 
+            background: #fff;
+            color: #555;
             border: 2px solid #ddd;
         }
 
-        .btn:active { transform: scale(0.95); }
-        
+        .btn:active {
+            transform: scale(0.95);
+        }
+
         /* Specific for Propose Day Game */
-        #noBtn { z-index: 50; }
-        
-        .hidden { display: none !important; }
+        #noBtn {
+            z-index: 50;
+        }
+
+        .hidden {
+            display: none !important;
+        }
 
         /* --- POPUP MODAL STYLES --- */
         .modal-overlay {
-            position: fixed; top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: rgba(0,0,0,0.5);
-            display: flex; justify-content: center; align-items: center;
-            z-index: 100; opacity: 0; pointer-events: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+            opacity: 0;
+            pointer-events: none;
             transition: opacity 0.3s ease;
         }
-        .modal-overlay.active { opacity: 1; pointer-events: all; }
-        
-        .modal-box {
-            background: white; padding: 2rem;
-            border-radius: 15px; text-align: center;
-            width: 85%; max-width: 300px;
-            transform: scale(0.8); transition: transform 0.3s ease;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-        .modal-overlay.active .modal-box { transform: scale(1); }
-        .modal-box h3 { color: #d63384; font-family: 'Dancing Script', cursive; font-size: 2rem; margin: 0 0 10px 0; }
-        .modal-box p { font-size: 1rem; color: #555; }
-        .close-btn { margin-top: 15px; background: #555; color: white; padding: 8px 20px; border-radius: 20px; border: none; cursor: pointer; }
 
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .modal-box {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            width: 85%;
+            max-width: 300px;
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-overlay.active .modal-box {
+            transform: scale(1);
+        }
+
+        .modal-box h3 {
+            color: #d63384;
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            margin: 0 0 10px 0;
+        }
+
+        .modal-box p {
+            font-size: 1rem;
+            color: #555;
+        }
+
+        .close-btn {
+            margin-top: 15px;
+            background: #555;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            border: none;
+            cursor: pointer;
+        }
     </style>
 </head>
+
 <body>
 
     <div id="bg-container"></div>
-    
+
     <div class="container" id="content-card"></div>
 
     <div class="modal-overlay" id="custom-modal">
@@ -141,23 +236,23 @@
         // ==========================================
         // SETTINGS 
         // ==========================================
-        const debugDay = 7; // Currently set to Rose Day
+        const debugDay = 12; // Currently set to Hug Day
         // ==========================================
-        
+
         const contentCard = document.getElementById('content-card');
         const bgContainer = document.getElementById('bg-container');
         const modal = document.getElementById('custom-modal');
         const modalTitle = document.getElementById('modal-title');
         const modalMsg = document.getElementById('modal-msg');
-        
+
         const today = new Date();
-        const currentDay = debugDay || today.getDate(); 
-        const currentMonth = today.getMonth() + 1; 
+        const currentDay = debugDay || today.getDate();
+        const currentMonth = today.getMonth() + 1;
 
         // Background Generator
         function createBackground(emoji) {
             bgContainer.innerHTML = '';
-            for(let i=0; i<20; i++) {
+            for (let i = 0; i < 20; i++) {
                 let el = document.createElement('div');
                 el.innerText = emoji;
                 el.classList.add('bg-element');
@@ -173,7 +268,7 @@
             modalTitle.innerText = title;
             modalMsg.innerText = message;
             modal.classList.add('active');
-            if(emoji) createBackground(emoji);
+            if (emoji) createBackground(emoji);
         }
 
         function closeModal() {
@@ -187,7 +282,7 @@
                 return;
             }
 
-            switch(currentDay) {
+            switch (currentDay) {
                 case 7: renderRoseDay(); break;
                 case 8: renderProposeDay(); break;
                 case 9: renderChocolateDay(); break;
@@ -253,7 +348,7 @@
             const proposeS = document.getElementById('propose-s');
 
             function moveButton() {
-                const margin = 20; 
+                const margin = 20;
                 const btnRect = noBtn.getBoundingClientRect();
                 const maxWidth = window.innerWidth - btnRect.width - margin;
                 const maxHeight = window.innerHeight - btnRect.height - margin;
@@ -311,7 +406,40 @@
             contentCard.innerHTML = `
                 <h1>Happy Hug Day! 🤗</h1>
                 <p>Aleena, I wish I could hold you tight right now.</p>
-                <img class="main-img" src="https://media.giphy.com/media/l8ooOxhcItds6y5yK/giphy.gif">
+                <div style="
+                    width: 100%;
+                    height: 250px;
+                    background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+                    border-radius: 15px;
+                    margin-bottom: 15px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+                    position: relative;
+                    overflow: hidden;
+                ">
+                    <div style="font-size: 5rem; animation: hugPulse 2s ease-in-out infinite;">🤗</div>
+                    <div style="font-size: 1.2rem; color: #d63384; font-weight: 600; margin-top: 10px;">
+                        *Sending Virtual Hugs*
+                    </div>
+                    <div style="position: absolute; top: 20px; left: 20px; font-size: 2rem; animation: float 3s ease-in-out infinite;">💕</div>
+                    <div style="position: absolute; top: 30px; right: 30px; font-size: 2rem; animation: float 3s ease-in-out infinite 0.5s;">💖</div>
+                    <div style="position: absolute; bottom: 40px; left: 40px; font-size: 2rem; animation: float 3s ease-in-out infinite 1s;">❤️</div>
+                    <div style="position: absolute; bottom: 30px; right: 20px; font-size: 2rem; animation: float 3s ease-in-out infinite 1.5s;">💗</div>
+                </div>
+                <style>
+                    @keyframes hugPulse {
+                        0%, 100% { transform: scale(1); }
+                        50% { transform: scale(1.2); }
+                    }
+                    @keyframes float {
+                        0%, 100% { transform: translateY(0px); opacity: 0.7; }
+                        50% { transform: translateY(-20px); opacity: 1; }
+                    }
+                </style>
+                <p style="color: #d63384; font-weight: 600;">Wrapping you in warmth and love today! 💝</p>
             `;
         }
 
@@ -342,4 +470,5 @@
         renderPage();
     </script>
 </body>
+
 </html>
