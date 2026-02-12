@@ -406,39 +406,7 @@
             contentCard.innerHTML = `
                 <h1>Happy Hug Day! 🤗</h1>
                 <p>Aleena, I wish I could hold you tight right now.</p>
-                <div style="
-                    width: 100%;
-                    height: 250px;
-                    background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
-                    border-radius: 15px;
-                    margin-bottom: 15px;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    align-items: center;
-                    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-                    position: relative;
-                    overflow: hidden;
-                ">
-                    <div style="font-size: 5rem; animation: hugPulse 2s ease-in-out infinite;">🤗</div>
-                    <div style="font-size: 1.2rem; color: #d63384; font-weight: 600; margin-top: 10px;">
-                        *Sending Virtual Hugs*
-                    </div>
-                    <div style="position: absolute; top: 20px; left: 20px; font-size: 2rem; animation: float 3s ease-in-out infinite;">💕</div>
-                    <div style="position: absolute; top: 30px; right: 30px; font-size: 2rem; animation: float 3s ease-in-out infinite 0.5s;">💖</div>
-                    <div style="position: absolute; bottom: 40px; left: 40px; font-size: 2rem; animation: float 3s ease-in-out infinite 1s;">❤️</div>
-                    <div style="position: absolute; bottom: 30px; right: 20px; font-size: 2rem; animation: float 3s ease-in-out infinite 1.5s;">💗</div>
-                </div>
-                <style>
-                    @keyframes hugPulse {
-                        0%, 100% { transform: scale(1); }
-                        50% { transform: scale(1.2); }
-                    }
-                    @keyframes float {
-                        0%, 100% { transform: translateY(0px); opacity: 0.7; }
-                        50% { transform: translateY(-20px); opacity: 1; }
-                    }
-                </style>
+                <img class="main-img" src="./picture/hug.jpg" alt="Hug Day">
                 <p style="color: #d63384; font-weight: 600;">Wrapping you in warmth and love today! 💝</p>
             `;
         }
